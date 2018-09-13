@@ -7,11 +7,12 @@ public class RpnMain {
         Scanner sc = new Scanner(System.in);
         String data = "";
         RPNCalculator calculator = new RPNCalculatorImpl();
+        data = sc.nextLine();
 
         while (!data.equals("c")) {
-            data = sc.nextLine();
             calculator.performAction(data);
             System.out.println("Stack :" +  calculator.getResult());
+            data = sc.nextLine();
         }
     }
 }
