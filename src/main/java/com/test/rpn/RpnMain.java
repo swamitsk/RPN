@@ -7,6 +7,8 @@ public class RpnMain {
         Scanner sc = new Scanner(System.in);
         String data = "";
         RPNCalculator calculator = new RPNCalculatorImpl();
+
+        System.out.println(" enter the calculator command, c to Close this application");
         data = sc.nextLine();
 
         while (!data.equals("c")) {
