@@ -50,8 +50,8 @@ public class RPNCalculatorImplTest {
 
     @org.junit.Test
     public void calculateMultipleOperation() {
-        responseStack.add("-2.6");
-        String calculateListMultiOperation1 = "1 2 3 4 + * - 5 /";
+        responseStack.add("0.7745966692");
+        String calculateListMultiOperation1 = "4 1 3 2 - * - 5 / sqrt";
         calculator.performAction(calculateListMultiOperation1);
         assertEquals(calculator.getResult(),responseStack);
     }
@@ -70,6 +70,10 @@ public class RPNCalculatorImplTest {
         String undoList = "12 3 undo undo 2 7 + 4 *";
         calculator.performAction(undoList);
         assertEquals(calculator.getResult(),responseStack);
+        responseStack.add("76");
+        undoList = "12 3 undo 7 + 4 *";
+        calculator.performAction(undoList);
+        assertEquals(calculator.getResult(),responseStack);
 
     }
     @org.junit.Test
@@ -79,5 +83,21 @@ public class RPNCalculatorImplTest {
         assertEquals(calculator.getResult(),responseStack);
     }
 
+    @org.junit.Test
+    public void testExceptionCaseInvalidNumber() {
+        responseStack.add("12");
+        responseStack.add("3");
+        calculateList.append(" &");
+        calculator.performAction(calculateList.toString());
+        assertEquals(calculator.getResult(),responseStack);
+    }
+
+    @org.junit.Test
+    public void testExceptionCaseInvalidOperand() {
+        responseStack.add("36");
+        calculateList.append(" * -");
+        calculator.performAction(calculateList.toString());
+        assertEquals(calculator.getResult(),responseStack);
+    }
 
 }

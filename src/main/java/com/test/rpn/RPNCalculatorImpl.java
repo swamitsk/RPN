@@ -68,17 +68,17 @@ public class RPNCalculatorImpl implements RPNCalculator {
             }
     }
 
-    private int performUndoCheck(List<String> dataList, int i) {
-        i++;
-        if (i < dataList.size() && dataList.get(i).equals("undo") && !resultCopyForDoubleUndo.isEmpty()) {
-            i++;
+    private int performUndoCheck(List<String> dataList, int position) {
+        position++;
+        if (position < dataList.size() && dataList.get(position).equals("undo") && !resultCopyForDoubleUndo.isEmpty()) {
+            position++;
             copy(resultCopyForDoubleUndo);
-        } else if (resultCopy.size() != 0) {
+        } else if (resultCopy.isEmpty()) {
             copy(resultCopy);
         } else {
             result.pop();
         }
-        return i;
+        return position;
     }
 
     private boolean ifDataInAnyOperationTakeCopyOfResultAndPopFirstElement(String data) {
