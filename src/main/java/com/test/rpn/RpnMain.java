@@ -8,7 +8,7 @@ public class RpnMain {
         String data = "";
         RPNCalculator calculator = new RPNCalculatorImpl();
 
-        System.out.println(" enter the calculator command, c to Close this application");
+        System.out.println(" enter the calculator command, c to Close this application accepted commands are real numbers / arithmetic operators / sqrt / clear / undo ");
         data = sc.nextLine();
 
         while (!data.equals("c")) {
